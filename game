@@ -1,0 +1,87 @@
+Console.WriteLine("please enter a number");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("please enter another number");
+            int b = Convert.ToInt32(Console.ReadLine());
+            int[,] matrix = new int[a, b];
+            int c = a * b;
+            int zugot = c / 2;
+            Random r = new Random();
+
+            //for (int i = 0; i < a; i++)
+            //{
+            //    for (int j = 0; j < b; j++)
+            //    {
+            //        int counter = 0;
+            //        while (counter < 2)
+            //        {
+            //            int s = r.Next(0, b);
+            //            int t = r.Next(0, a);
+            //            matrix[s, t] = zugot;
+            //            Console.WriteLine($"[{s}, {t}]: {matrix[s, t]}");
+            //            counter++;
+            //        }
+            //        zugot--;
+
+            //    }
+            //}
+            Console.WriteLine();
+            Console.WriteLine();
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+                    int counter = 0;
+                    while (counter < 2)
+                    {
+                        if (zugot==0)
+                        {
+                            zugot++;
+                        }
+                        Random o = new Random();
+                        Console.WriteLine("please enter a number");
+                        int d = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("please enter another number");
+                        int f = Convert.ToInt32(Console.ReadLine());
+                        while(d==0||f==0)
+                        
+                     
+
+
+                        matrix[i, j] = zugot;
+                        counter++;
+                       // if (zugot == 0) 
+                       //{
+                       //     zugot++;
+                       // }
+                       // else
+                       // {
+                       //     j++; 
+                       // }
+                    }
+                    if (i > a/2 -1)
+                    {
+                       
+                        zugot++;
+                    } 
+                    else
+                    {
+                    zugot--;
+                    }
+                    
+                
+                    
+                    Console.WriteLine($"[{i}, {j}]: {matrix[i, j]}");
+
+                }
+            }
+            Console.ReadLine();
+
+            //for (int i = 1; i < zugot; i++)
+            //{
+            //    int counter = 0;
+            //    while (counter<2)
+            //    {
+                    
+            //        counter++;
+            //    }
+            //}
