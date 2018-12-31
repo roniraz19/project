@@ -1,87 +1,162 @@
-Console.WriteLine("please enter a number");
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp21
+{
+    class Program
+    {
+        static void Main(string[] args)
+
+        {
+
+
+
+            int size = GetSize();
+
+
+
+            int[,] matrix = new int[size, size];
+
+            GenerateRandomMatrix(size, matrix);
+
+
+
+            PrintMatrix(matrix);
+            Console.WriteLine("please enter row");
             int a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("please enter another number");
+            Console.WriteLine("please enter coll");
             int b = Convert.ToInt32(Console.ReadLine());
-            int[,] matrix = new int[a, b];
-            int c = a * b;
-            int zugot = c / 2;
-            Random r = new Random();
-
-            //for (int i = 0; i < a; i++)
-            //{
-            //    for (int j = 0; j < b; j++)
-            //    {
-            //        int counter = 0;
-            //        while (counter < 2)
-            //        {
-            //            int s = r.Next(0, b);
-            //            int t = r.Next(0, a);
-            //            matrix[s, t] = zugot;
-            //            Console.WriteLine($"[{s}, {t}]: {matrix[s, t]}");
-            //            counter++;
-            //        }
-            //        zugot--;
-
-            //    }
-            //}
-            Console.WriteLine();
-            Console.WriteLine();
-            for (int i = 0; i < a; i++)
+            Console.WriteLine("please enter row");
+            int c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("please enter coll");
+            int d = Convert.ToInt32(Console.ReadLine());
+            if (matrix[a, b] == matrix[c, d])
             {
-                for (int j = 0; j < b; j++)
-                {
-                    int counter = 0;
-                    while (counter < 2)
-                    {
-                        if (zugot==0)
-                        {
-                            zugot++;
-                        }
-                        Random o = new Random();
-                        Console.WriteLine("please enter a number");
-                        int d = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("please enter another number");
-                        int f = Convert.ToInt32(Console.ReadLine());
-                        while(d==0||f==0)
-                        
-                     
-
-
-                        matrix[i, j] = zugot;
-                        counter++;
-                       // if (zugot == 0) 
-                       //{
-                       //     zugot++;
-                       // }
-                       // else
-                       // {
-                       //     j++; 
-                       // }
-                    }
-                    if (i > a/2 -1)
-                    {
-                       
-                        zugot++;
-                    } 
-                    else
-                    {
-                    zugot--;
-                    }
-                    
-                
-                    
-                    Console.WriteLine($"[{i}, {j}]: {matrix[i, j]}");
-
-                }
+                Console.WriteLine("you find the mutch");
             }
+        
+
+
+
+
+
+
             Console.ReadLine();
 
-            //for (int i = 1; i < zugot; i++)
-            //{
-            //    int counter = 0;
-            //    while (counter<2)
-            //    {
-                    
-            //        counter++;
-            //    }
-            //}
+        }
+
+
+
+        private static void PrintMatrix(int[,] matrix)
+
+        {
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+
+            {
+
+                for (int j = 0; j < matrix.GetLength(1); j++)
+
+                {
+
+                    Console.Write($"{matrix[i, j],2 } ");
+
+                }
+
+                Console.WriteLine();
+
+            }
+
+        }
+
+
+
+        private static void GenerateRandomMatrix(int size, int[,] matrix)
+
+        {
+
+            Random r = new Random();
+
+            int zugot = size * size / 2;
+
+            for (int i = 1; i <= zugot; i++)
+
+            {
+
+                // find place for car number 1
+
+                // put in this place the i
+
+                int row, col;
+
+                do
+
+                {
+
+                    row = r.Next(0, size);
+
+                    col = r.Next(0, size);
+
+                }
+
+                while (matrix[row, col] != 0);
+
+                matrix[row, col] = i;
+
+
+
+                // find place for car number 2
+
+                // put in this place the i
+
+                do
+
+                {
+
+                    row = r.Next(0, size);
+
+                    col = r.Next(0, size);
+
+                }
+
+                while (matrix[row, col] != 0);
+
+                matrix[row, col] = i;
+
+            }
+
+        }
+
+
+
+        private static int GetSize()
+
+        {
+
+            int size;
+
+            do
+
+            {
+
+                Console.WriteLine("Enter size:");
+
+                size = Convert.ToInt32(Console.ReadLine());
+
+            }
+
+            while (size <= 0 || size % 2 != 0 || size > 8);
+
+
+
+            return size;
+
+        }
+        
+
+    }
+
+}
